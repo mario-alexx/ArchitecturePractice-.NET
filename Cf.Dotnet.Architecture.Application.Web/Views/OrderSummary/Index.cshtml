@@ -1,0 +1,37 @@
+@model IEnumerable<OrdersSummary>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            Comprador
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Status</td>
+            <td>@item.Total</td>
+            <td>@item.BuyerName</td>
+            <td>
+                <form method="post" asp-action="Confirm">
+                    <input type="hidden" name="Id" value="@item.Id"/>
+                    <input type="submit" value="Confirmar" class="btn btn-primary"/>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
